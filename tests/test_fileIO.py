@@ -1,6 +1,6 @@
 import json
 
-from blockchain_chat.fileIO import load_data, init_data
+from blockchain_chat.fileIO import load_data, init_data, write_data
 
 test_data = {
     "0":{
@@ -64,3 +64,19 @@ def test_override_data(tmp_path):
         data = json.load(f)
 
     assert data == {}, "初期化されたデータが空ではありません。"
+
+# データ書き込みテスト
+def test_write_data(tmp_path):
+    # 一時的なJSONファイルを作成
+    json_file = tmp_path / "test_data.json"
+    with json_file.open('w', encoding = 'utf-8') as f:
+        json.dump({}, f)
+    
+    # データ書き込み関数を実行
+    write_data(json_file, test_data)
+
+    # ファイルの内容を読み込み
+    with json_file.open('r', encoding = 'utf-8') as f:
+        data = json.load(f)
+    
+    assert data == test_data, "書き込まれたデータが正しくありません。"
