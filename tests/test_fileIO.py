@@ -1,6 +1,6 @@
 import json
 
-from blockchain_chat.fileIO import load_data
+from blockchain_chat.fileIO import load_data, init_data
 
 # データロードテスト
 def test_load_data(tmp_path):
@@ -32,3 +32,20 @@ def test_load_data(tmp_path):
 
     # 結果を検証
     assert result == test_data
+
+# データ初期化テスト
+def test_init_data(tmp_path):
+    # 一時的なファイルパスを作成
+    json_file = tmp_path / "test_data.json"
+
+    # 初期化関数を実行
+    init_data(json_file)
+
+    # ファイルが作成されたか確認
+    assert json_file.exists(), "JSONファイルが作成されていません。"
+
+    # ファイルの内容を読み込み
+    with json_file.open('r', encoding = 'utf-8') as f:
+        data = json.load(f)
+
+    assert data == {}, "初期化されたデータが空ではありません。"
