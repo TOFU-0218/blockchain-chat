@@ -2,9 +2,6 @@ import json
 
 from blockchain_chat.fileIO import load_data, init_data
 
-# データロードテスト
-def test_load_data(tmp_path):
-    # テスト用のJSONデータ
 test_data = {
     "0":{
         "from": "Alice",
@@ -29,7 +26,7 @@ def test_load_data(tmp_path):
     with json_file.open('w', encoding = 'utf-8') as f:
         json.dump(test_data, f)
     
-    # 関数を実行して結果を取得
+    # 初期化関数を実行
     result = load_data(json_file)
 
     # 結果を検証
@@ -45,6 +42,22 @@ def test_init_data(tmp_path):
 
     # ファイルが作成されたか確認
     assert json_file.exists(), "JSONファイルが作成されていません。"
+
+    # ファイルの内容を読み込み
+    with json_file.open('r', encoding = 'utf-8') as f:
+        data = json.load(f)
+
+    assert data == {}, "初期化されたデータが空ではありません。"
+
+# 既存データをオーバーライドして初期化するテスト
+def test_override_data(tmp_path):
+    # 一時的なJSONファイルを作成
+    json_file = tmp_path / "test_data.json"
+    with json_file.open('w', encoding = 'utf-8') as f:
+        json.dump(test_data, f)
+
+    # 初期化関数を実行
+    init_data(json_file)
 
     # ファイルの内容を読み込み
     with json_file.open('r', encoding = 'utf-8') as f:
