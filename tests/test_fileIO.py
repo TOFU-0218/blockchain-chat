@@ -6,14 +6,14 @@ from blockchain_chat.fileIO import load_data
 def test_load_data(tmp_path):
     # テスト用のJSONデータ
     test_data = {
-        0:{
+        "0":{
             "from": "Alice",
             "to": "Bob",
             "message": "Hello!",
             "time": "2020-01-01 12:00:00",
             "hash": "4c716d4cf211c7b7d2f3233c941771ad0507ea5bacf93b492766aa41ae9f720d"
         },
-        1:{
+        "1":{
             "from": "Bob",
             "to": "Alice",
             "message": "Hi!",
