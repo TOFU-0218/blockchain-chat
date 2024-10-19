@@ -2,7 +2,8 @@ import json
 
 # jsonファイルに書き込み
 def write_data(json_file_path, data):
-    pass
+    with json_file_path.open('w', encoding = 'utf-8') as f:
+        json.dump(data, f)
 
 # jsonから辞書型にする
 def load_data(json_file_path):
