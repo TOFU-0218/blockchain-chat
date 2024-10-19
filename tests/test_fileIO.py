@@ -1,6 +1,6 @@
 import json
 
-from .test_fileIO import load_data
+from blockchain_chat.fileIO import load_data
 
 # データロードテスト
 def test_load_data(tmp_path):
