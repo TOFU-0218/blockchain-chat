@@ -4,15 +4,15 @@ from blockchain_chat.fileIO import load_data, init_data, write_data
 
 test_data = {
     "0":{
-        "from": "Alice",
-        "to": "Bob",
+        "sender": "Alice",
+        "recipient": "Bob",
         "message": "Hello!",
         "time": "2020-01-01 12:00:00",
         "hash": "4c716d4cf211c7b7d2f3233c941771ad0507ea5bacf93b492766aa41ae9f720d"
     },
     "1":{
-        "from": "Bob",
-        "to": "Alice",
+        "sender": "Bob",
+        "recipient": "Alice",
         "message": "Hi!",
         "time": "2020-01-01 12:01:00",
         "hash": "daca2e083e456dff21ff10998c1e99f414e45e5f3f0709af0b33b86df4694d19"
