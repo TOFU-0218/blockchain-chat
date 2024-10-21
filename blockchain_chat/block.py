@@ -1,11 +1,11 @@
-import hashlib, time
+import hashlib
 
 class Block:
-    def __init__(self, sender, recipient, message, previous_hash, index):
+    def __init__(self, sender, recipient, message, timestamp, previous_hash, index):
         self.sender = sender
         self.recipient = recipient
         self.message = message
-        self.timestamp = time.time()
+        self.timestamp = timestamp
         self.previous_hash = previous_hash
         self.index = index
         self.hash = self.calculate_hash()
