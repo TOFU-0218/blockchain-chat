@@ -1,9 +1,9 @@
 import hashlib
 
 class Block:
-    def __init__(self, sender, recipient, message, timestamp, previous_hash, index):
+    def __init__(self, sender, receiver, message, timestamp, previous_hash, index):
         self.sender = sender
-        self.recipient = recipient
+        self.receiver = receiver
         self.message = message
         self.timestamp = timestamp
         self.previous_hash = previous_hash
@@ -11,7 +11,7 @@ class Block:
         self.hash = self.calculate_hash()
         self.block = {
             "sender": self.sender,
-            "recipient": self.recipient,
+            "receiver": self.receiver,
             "message": self.message,
             "timestamp": self.timestamp,
             "index": self.index,
@@ -20,4 +20,4 @@ class Block:
         }
 
     def calculate_hash(self):
-        return hashlib.sha256(f"{self.sender}{self.recipient}{self.message}{self.timestamp}{self.previous_hash}{self.index}".encode()).hexdigest()
+        return hashlib.sha256(f"{self.sender}{self.receiver}{self.message}{self.timestamp}{self.previous_hash}{self.index}".encode()).hexdigest()

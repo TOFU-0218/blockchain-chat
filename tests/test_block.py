@@ -10,7 +10,7 @@ def test_create_block():
     assert block.hash == hash_sha256.hexdigest()
     assert block.block == {
         "sender": "Alice",
-        "recipient": "Bob",
+        "receiver": "Bob",
         "message": "Hello!",
         "timestamp": timestamp,
         "previous_hash": "a",
